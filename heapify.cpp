@@ -96,7 +96,7 @@ int main()
     h.print();
     h.deletion();
     h.print();
-    vector<int> v = {-1, 54, 53, 55, 52, 50};
+    vector<int> v = {-1, 54, 55, 53, 52, 50};
     int n = v.size();
     for(int i = n/2; i>0; i--){
         h.heapify(v, n, i);
