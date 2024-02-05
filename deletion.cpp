@@ -27,24 +27,40 @@ class heap{
             }
         }
     }
-    int n = arr.size();
-    void deletion(){
-        arr[1] = arr[n];
+   
+    void deletion() {
+         int n = arr.size();
+    if (size == 0) {
+        cout << "Heap is empty." << endl;
+        return;
+    }
 
-        for(int i = 1; i<n; i++){
-            if(arr[i] > arr[2*i] && arr[i] > arr[(2*i)+1]){
-                return;
-            }
-            else{
-                if(arr[i] < arr[2*i] && arr[2*i] > arr[2*i+1]){
-                    swap(arr[i], arr[2*i]);
-                }
-                else{
-                    swap(arr[i], arr[2*i + 1]);
-                }
-            }
+    arr[1] = arr[size];
+    arr.pop_back();
+    size--;  // Decrease the size after deletion
+
+    int i = 1;
+    while (i <size) {
+        int left_child = 2 * i;
+        int right_child = 2 * i + 1;
+
+        int max_index = i;
+        if (arr[i] < arr[left_child]) {
+            max_index = left_child;
+        }
+        if (right_child <= size && arr[max_index] < arr[right_child]) {
+            max_index = right_child;
+        }
+
+        if (max_index != i) {
+            swap(arr[i], arr[max_index]);
+            i = max_index;
+        } else {
+            break;
         }
     }
+}
+
 
      void print() {
         for (int i = 1; i<arr.size(); i++) {
